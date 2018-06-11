@@ -54,7 +54,7 @@ If 16 decimal is not a business requirement, it would be better to use 18 decima
 
 ### `Ownable` contract is implemented, but not used
 OpenZeppelin `Ownable` contract allows to change the owner of the token contract.
-This contract is copied from original OpenZeppelin library and modified with lose-control issue (details are [here](#renounceownership-method)), but is not inherited by any contract in the code, including KNT token contract.
+This contract is copied from the original OpenZeppelin library and modified with the lose-control issue (details are [here](#renounceownership-method)), but is not inherited by any contract in the code, including the Kora Network Token contract.
 Contract owner cannot change ownership if `Ownable` contract is not inherited. If the owner's wallet is compromised, the hacker will get full control over the token contract.
 
 
