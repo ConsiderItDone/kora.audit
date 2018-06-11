@@ -29,7 +29,7 @@ The code uses [OpenZeppelin, a framework to build secure smart contracts on Ethe
 Nevertheless, there was found no package that uses OpenZeppelin library from the original `npm` repository; `copy-paste` approach was used instead of `npm` module usage.
 Therefore, the copy-pasted code was additionally checked for the malicious modifications and original identity.
 
-In the course of our analysis, the code identity was not confirmed. Differences was found in the `Ownable` contract. There is exist additional `renounceOwnership()` method. Details can be found [here](/#renounceownership-method).
+In the course of our analysis, the code identity was not confirmed. Differences was found in the `Ownable` contract. There is exist additional `renounceOwnership()` method. Details can be found [here](#renounceownership-method).
 
 Original OpenZeppelin library code files version 1.9.0 can be found [here](/node_modules/openzeppelin-solidity/).
 
@@ -39,7 +39,7 @@ There is `renounceOwnership()` was found in the `Ownable` contract.
 If `owner` (wallet that deployed the contract) of the contract is a centralized system, it can cause critical problem by loss of ownership if `renounceOwnership()` is called.
 If there is no need to lose control over the token contract, we strongly recommend to remove this method from the contract.
 
-Nevertheless, `Ownable` contract is implemented, but not used in the token. Details are explained [here](/#ownable-contract-is-implemented-but-not-used).
+Nevertheless, `Ownable` contract is implemented, but not used in the token. Details are explained [here](#ownable-contract-is-implemented-but-not-used).
 
 ### 16 decimals
 Using 18 (`wei`) decimals is a more common practice.
@@ -54,7 +54,7 @@ If 16 decimal is not a business requirement, it would be better to use 18 decima
 
 ### `Ownable` contract is implemented, but not used
 OpenZeppelin `Ownable` contract allows to change the owner of the token contract.
-This contract is copied from original OpenZeppelin library and modified with lose-control issue (details are [here](/#renounceownership-method)), but is not inherited by any contract in the code, including KNT token contract.
+This contract is copied from original OpenZeppelin library and modified with lose-control issue (details are [here](#renounceownership-method)), but is not inherited by any contract in the code, including KNT token contract.
 Contract owner cannot change ownership if `Ownable` contract is not inherited. If the owner's wallet is compromised, the hacker will get full control over the token contract.
 
 
